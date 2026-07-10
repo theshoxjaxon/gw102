@@ -41,18 +41,6 @@ render();
 restartAutoplay();
 
 // ---- Mobile menu ----
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const iconOpen = document.getElementById('icon-open');
-const iconClose = document.getElementById('icon-close');
-
-menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('flex');
-    mobileMenu.classList.toggle('hidden', !isOpen);
-    iconOpen.classList.toggle('hidden', isOpen);
-    iconClose.classList.toggle('hidden', !isOpen);
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
-});
 const posts = [
   {
     title: "Python web freymvorkini yozish. II qism.",
