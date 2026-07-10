@@ -133,3 +133,115 @@ document.getElementById('searchInput').addEventListener('input', (e) => {
   );
   renderPosts(filtered);
 });
+
+
+
+
+
+
+// ---------- Import-graph hero visualization ----------
+(function () {
+  const skills = ['react', 'typescript', 'node', 'vite', 'next.js', 'graphql', 'vue', 'docker'];
+  const cx = 450, cy = 350, r = 240;
+  const nodesG = document.getElementById('nodes');
+  const edgesG = document.getElementById('edges');
+  const colors = ['#8b7cff', '#2ee6b0', '#ff6b9d'];
+
+  // center node
+  const center = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  center.innerHTML = `
+    <circle cx="${cx}" cy="${cy}" r="10" fill="#0a0d14" stroke="#2ee6b0" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="10" fill="none" stroke="#2ee6b0" stroke-width="1" opacity="0.5">
+      <animate attributeName="r" values="10;26;10" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="${cx}" y="${cy + 34}" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#8891a8">core.js</text>
+  `;
+  nodesG.appendChild(center);
+
+  skills.forEach((name, i) => {
+    const angle = (i / skills.length) * Math.PI * 2 - Math.PI / 2;
+    const rr = r * (0.85 + (i % 3) * 0.08);
+    const x = cx + Math.cos(angle) * rr;
+    const y = cy + Math.sin(angle) * rr;
+    const color = colors[i % colors.length];
+
+    const edge = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    edge.setAttribute('x1', cx);
+    edge.setAttribute('y1', cy);
+    edge.setAttribute('x2', x);
+    edge.setAttribute('y2', y);
+    edge.setAttribute('stroke', color);
+    edge.setAttribute('stroke-opacity', '0.35');
+    edgesG.appendChild(edge);
+
+    const node = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    node.innerHTML = `
+      <circle cx="${x}" cy="${y}" r="5.5" fill="${color}">
+        <animate attributeName="r" values="5.5;7.5;5.5" dur="${2.5 + i * 0.3}s" repeatCount="indefinite"/>
+      </circle>
+      <text x="${x}" y="${y - 14}" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#565f75">${name}</text>
+    `;
+    nodesG.appendChild(node);
+  });
+})();
+
+// ---------- Terminal typing effect ----------
+(function () {
+  const el = document.getElementById('typedBody');
+
+  const html =
+`<span class="text-violet">const</span> nurmuhammad = {
+  <span class="text-[#f0c674]">role</span>: <span class="text-teal">'Frontend Engineer'</span>,
+  <span class="text-[#f0c674]">stack</span>: [<span class="text-teal">'React'</span>, <span class="text-teal">'TypeScript'</span>, <span class="text-teal">'Node.js'</span>],
+  <span class="text-[#f0c674]">focus</span>: <span class="text-teal">'interfaces that feel inevitable'</span>,
+  <span class="text-[#f0c674]">status</span>: <span class="text-teal">'open to opportunities'</span>
+};
+
+<span class="text-violet">export default</span> nurmuhammad;`;
+
+  const cursor = '<span class="inline-block w-[7px] h-[15px] bg-teal ml-0.5 animate-blink align-text-bottom"></span>';
+
+  let i = 0;
+  const full = html;
+  const plainLength = full.replace(/<[^>]*>/g, '').length;
+
+  function typeWriter() {
+    let inTag = false;
+    let count = 0;
+    let result = '';
+    for (let idx = 0; idx < full.length; idx++) {
+      const ch = full[idx];
+      result += ch;
+      if (ch === '<') inTag = true;
+      if (!inTag) count++;
+      if (ch === '>') inTag = false;
+      if (count >= i) break;
+    }
+    el.innerHTML = result + cursor;
+    if (i < plainLength) {
+      i++;
+      requestAnimationFrame(() => setTimeout(typeWriter, 14));
+    }
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.innerHTML = full;
+  } else {
+    typeWriter();
+  }
+})();
+
+// ---------- Scroll reveal ----------
+(function () {
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  items.forEach((it) => io.observe(it));
+})();
