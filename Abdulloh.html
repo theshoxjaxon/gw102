@@ -7,6 +7,246 @@
     <title>Abdulloh — GW 102</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+  :root{
+    --bg:#0B0D12;
+    --bg-2:#101319;
+    --panel:#151925;
+    --panel-2:#1B2130;
+    --line:#262C3B;
+    --text:#EDEFF5;
+    --muted:#8991A8;
+    --lime:#8CF29C;
+    --blue:#6FA3FF;
+    --amber:#F2C879;
+    --coral:#F2867E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1000px 500px at 15% -5%, rgba(140,242,156,0.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(111,163,255,0.07), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  .font-display{font-family:'Sora',sans-serif;}
+  .font-mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+ 
+  .glow-lime{ box-shadow: 0 0 0 1px rgba(140,242,156,0.22), 0 20px 60px -20px rgba(140,242,156,0.25); }
+ 
+  .cursor-blink::after{
+    content:"";
+    display:inline-block;
+    width:9px;height:1.05em;
+    margin-left:4px;
+    background:var(--lime);
+    vertical-align:-2px;
+    animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+ 
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.02em;
+    color:var(--lime);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px; height:1px;
+    background:var(--lime);
+  }
+ 
+  section{ padding:64px 0; border-top:1px solid var(--line); }
+  section:first-of-type{ border-top:none; }
+ 
+  .dot{width:8px;height:8px;border-radius:999px;display:inline-block}
+ 
+  .skill-row{ display:flex; align-items:center; gap:16px; padding:12px 0; }
+  .bar-track{ flex:1; height:7px; background:var(--panel-2); border-radius:99px; overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:99px; }
+ 
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+  }
+ 
+  .info-row{
+    display:flex; align-items:center; gap:14px;
+    padding:16px 18px;
+    border-radius:12px;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+  }
+  .info-row .icon{
+    width:34px;height:34px;flex:none;
+    border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(140,242,156,0.12);
+    color:var(--lime);
+  }
+  .info-row .label{ font-size:11px; color:var(--muted); font-family:'JetBrains Mono',monospace; }
+  .info-row .value{ font-size:14.5px; font-weight:500; word-break:break-word; }
+ 
+  .reveal{ opacity:0; transform:translateY(14px); animation:up .7s ease forwards; }
+  @keyframes up{ to{opacity:1; transform:none;} }
+ 
+  ::selection{ background:var(--lime); color:#0B0D12; }
+ 
+  @media (prefers-reduced-motion: reduce){
+    .cursor-blink::after{ animation:none; }
+    .reveal{ animation:none; opacity:1; transform:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+ 
+<div class="wrap">
+ 
+  <!-- HERO -->
+  <section class="!pt-16 sm:!pt-20 !pb-16" style="padding-top:64px;">
+    <div style="display:grid; gap:40px;" class="md-grid">
+      <div class="reveal" style="animation-delay:.05s">
+        <h1 class="font-display" style="font-weight:800; font-size:clamp(34px,6vw,52px); line-height:1.05; margin-bottom:18px;">
+
+            <div>
+                <img src="./imgrasm.png" alt="" style="width:100px; align-items: center; height:100px; border-radius:999px; object-fit:cover; margin-bottom:12px;">
+            </div>
+          Abdulloh<br>Zikrillayev
+        </h1>
+        <p style="color:var(--muted); font-size:16px; max-width:480px; margin-bottom:26px;">
+          14 yoshda, Toshkentda yashayman. Coddycamp'da web dasturlashni o'rganyapman — 7 oydan
+          beri HTML, CSS, JavaScript va Tailwind bilan mashq qilib kelyapman.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="font-mono" style="font-size:13px; padding:8px 14px; border-radius:8px; background:var(--panel-2); border:1px solid var(--line); color:var(--lime);">Junior Web Developer</span>
+          <span class="font-mono" style="font-size:13px; padding:8px 14px; border-radius:8px; background:var(--panel-2); border:1px solid var(--line); color:var(--muted);">Coddycamp • 7 oy</span>
+        </div>
+      </div>
+ 
+      <div class="reveal card glow-lime" style="animation-delay:.15s; overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid var(--line); background:var(--panel-2);">
+          <span class="dot" style="background:#F27878"></span>
+          <span class="dot" style="background:var(--amber)"></span>
+          <span class="dot" style="background:var(--lime)"></span>
+          <span class="font-mono" style="margin-left:10px; font-size:12px; color:var(--muted);">developer.js</span>
+        </div>
+        <pre class="font-mono" style="font-size:13px; line-height:1.9; padding:20px; overflow-x:auto;"><code><span style="color:var(--muted)">1</span>  <span style="color:var(--blue)">const</span> developer = {
+<span style="color:var(--muted)">2</span>    name: <span style="color:var(--amber)">"Abdulloh Zikrillayev"</span>,
+<span style="color:var(--muted)">3</span>    age: <span style="color:var(--lime)">14</span>,
+<span style="color:var(--muted)">4</span>    role: <span style="color:var(--amber)">"Junior Web Developer"</span>,
+<span style="color:var(--muted)">5</span>    city: <span style="color:var(--amber)">"Tashkent, UZ"</span>,
+<span style="color:var(--muted)">6</span>    learningAt: <span style="color:var(--amber)">"Coddycamp"</span>,
+<span style="color:var(--muted)">7</span>    experience: <span style="color:var(--amber)">"7 months"</span>,
+<span style="color:var(--muted)">8</span>    stack: [<span style="color:var(--amber)">"HTML"</span>, <span style="color:var(--amber)">"CSS"</span>, <span style="color:var(--amber)">"JS"</span>, <span style="color:var(--amber)">"Tailwind"</span>],
+<span style="color:var(--muted)">9</span>  };<span class="cursor-blink"></span></code></pre>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ABOUT -->
+  <section>
+    <p class="eyebrow">about</p>
+    <h2 class="font-display" style="font-weight:700; font-size:26px; margin-bottom:18px;">Men haqimda</h2>
+    <p style="color:var(--muted); max-width:640px;">
+      Ismim Abdulloh, 31-yanvar 2012-yilda tug'ilganman. Hozir Coddycamp'da veb-dasturlashni
+      o'rganyapman va 7 oy davomida HTML, CSS, JavaScript hamda Tailwind CSS bilan amaliyot
+      qilib kelyapman. Maqsadim — chiroyli va foydali interfeyslar yaratishni chuqur o'rganish
+      va kelajakda professional frontend dasturchi bo'lish.
+    </p>
+  </section>
+ 
+  <!-- SKILLS -->
+  <section>
+    <p class="eyebrow">skills</p>
+    <h2 class="font-display" style="font-weight:700; font-size:26px; margin-bottom:28px;">Texnologiyalar</h2>
+ 
+    <div style="display:grid; gap:0 48px;" class="skills-grid">
+      <div>
+        <div class="skill-row">
+          <span class="font-mono" style="font-size:14px; width:100px;">HTML</span>
+          <div class="bar-track"><div class="bar-fill" style="width:80%; background:var(--lime)"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="font-mono" style="font-size:14px; width:100px;">CSS</span>
+          <div class="bar-track"><div class="bar-fill" style="width:70%; background:var(--blue)"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-row">
+          <span class="font-mono" style="font-size:14px; width:100px;">Tailwind</span>
+          <div class="bar-track"><div class="bar-fill" style="width:60%; background:var(--amber)"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="font-mono" style="font-size:14px; width:100px;">JavaScript</span>
+          <div class="bar-track"><div class="bar-fill" style="width:45%; background:var(--coral)"></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="font-mono" style="font-size:12px; color:var(--muted); margin-top:20px;">// har kuni sal-sal o'sib boryapti :)</p>
+  </section>
+ 
+  <!-- CONTACT (plain info, no links) -->
+  <section class="!pb-20">
+    <p class="eyebrow">contact</p>
+    <h2 class="font-display" style="font-weight:700;  font-size:26px; margin-bottom:24px;">Bog'lanish</h2>
+ 
+    <div style="display:grid; gap:14px; max-width:520px;">
+      <div class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </span>
+        <div>
+          <div class="label">EMAIL</div>
+          <div class="value">Abdullohfv@gmail.com</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.35.95.1-.75.4-1.25.73-1.53-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.26 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
+        </span>
+        <div>
+          <div class="label">GITHUB</div>
+          <div class="value">Zikrillayev77</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div>
+          <div class="label">INSTAGRAM</div>
+          <div class="value">Zikrillayev77</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <footer style="border-top:1px solid var(--line); padding:28px 0; text-align:center;">
+    <p class="font-mono" style="font-size:11.5px; color:var(--muted);">© 2026 Abdulloh Zikrillayev</p>
+  </footer>
+ 
+</div>
+ 
+<style>
+  @media (min-width: 768px){
+    .md-grid{ grid-template-columns: 1.1fr 0.9fr; align-items:center; }
+    .skills-grid{ grid-template-columns: 1fr 1fr; }
+  }
+</style>
+ 
+</body>
+</html>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <script>
@@ -32,15 +272,8 @@
         </nav>
     </header>
 
-    <main class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-        <span class="flex h-20 w-20 items-center justify-center rounded-2xl bg-accent font-display text-3xl font-bold text-white">Ab</span>
-        <h1 class="mt-6 font-display text-5xl font-extrabold sm:text-6xl">Abdulloh</h1>
-        <p class="mt-3 text-lg text-ink/60">Member of GW 102. This page belongs to Abdulloh — content coming soon.</p>
-    </main>
-
-    <footer class="border-t-2 border-ink/10">
-        <div class="mx-auto max-w-4xl px-4 py-6 text-sm text-ink/60 sm:px-6">Salom from GW 102.</div>
-    </footer>
+  
+    
 </body>
 
 </html>
